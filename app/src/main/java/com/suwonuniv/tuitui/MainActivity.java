@@ -10,6 +10,7 @@ import android.content.pm.Signature;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 import android.widget.RelativeLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -21,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.kakao.sdk.auth.model.OAuthToken;
 import com.kakao.sdk.user.UserApiClient;
+import com.suwonuniv.tuitui.common.activity.BaseActivity;
 import com.suwonuniv.tuitui.signup.SignUpActivity;
 
 import java.security.MessageDigest;
@@ -29,7 +31,7 @@ import java.security.NoSuchAlgorithmException;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private final String KAKAO_PREFS_NAME = "kakaoAccessToken";
     private RelativeLayout kakaoLoginBtn, naverLoginBtn;
 
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        
+
         //  카카오 콜백 함수
         Function2<OAuthToken, Throwable, Unit> kakaoCallback = (oAuthToken, throwable) -> {
             if (oAuthToken != null) {

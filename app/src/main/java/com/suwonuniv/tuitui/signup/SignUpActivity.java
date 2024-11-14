@@ -10,8 +10,10 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.suwonuniv.tuitui.MainActivity;
 import com.suwonuniv.tuitui.R;
+import com.suwonuniv.tuitui.common.activity.BaseActivity;
+import com.suwonuniv.tuitui.home.HomeActivity;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends BaseActivity {
     private ImageButton backButton;
     private Button registerButton;
 
@@ -35,8 +37,10 @@ public class SignUpActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 회원가입 로직 구현
-
+                // 프로필 등록 성공 후 홈으로 화면 전환
+                Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                SignUpActivity.this.startActivity(intent);
+                SignUpActivity.this.finish();
             }
         });
     }
